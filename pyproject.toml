@@ -1,0 +1,14 @@
+[project]
+name = "09-low-rank-svd-lora"
+version = "0.1.0"
+description = "Low-rank and SVD intuition: why a rank-8 LoRA update is enough"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pillow>=13.0.0",
+    "scikit-learn>=1.9.1",
+]
+
+[tool.ruff]
+line-length = 120
