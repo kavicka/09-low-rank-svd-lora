@@ -1,6 +1,6 @@
 # 09 · Low-rank, SVD a prečo LoRA s rankom 8 stačí
 
-🇬🇧 [English version](README.md)
+🇬🇧 [English version](README.md) · 📘 [Tutoriál krok za krokom](TUTORIAL.sk.md)
 
 ## TL;DR
 Matematické minimum pred P5 (fine-tuning cez LoRA). Cieľ podľa roadmapy: *vysvetliť, prečo LoRA s rankom 8 stačí*. Tri experimenty v NumPy (pevné seedy, každé číslo z `results.json`):

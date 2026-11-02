@@ -1,6 +1,6 @@
 # 09 · Low-rank, SVD & why LoRA rank 8 is enough
 
-🇸🇰 [Slovenská verzia](README.sk.md)
+🇸🇰 [Slovenská verzia](README.sk.md) · 📘 [Step-by-step tutorial](TUTORIAL.md)
 
 ## TL;DR
 The math minimum before P5 (fine-tuning with LoRA). Goal from the roadmap: *explain why LoRA with rank 8 is enough*. Three NumPy experiments (fixed seeds, every number from `results.json`):
