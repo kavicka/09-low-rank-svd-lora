@@ -14,6 +14,13 @@ The math minimum before P5 (fine-tuning with LoRA). Goal from the roadmap: *expl
 
 ![SVD of a photo](assets/svd_image.gif)
 
+## Start here
+Large models contain enormous tables of weights. Changing every number for a new task is expensive. **LoRA** keeps the original weights fixed and learns a small correction made from two narrower matrices. This task asks: **can such a small correction be enough?**
+
+A picture makes the idea concrete. A greyscale photo is a matrix of numbers; many rows and columns contain related patterns. **SVD** ranks those patterns by importance. Keeping only the first 8 preserves 91.7% of the measured “energy” in this experiment while storing 2.9% as many numbers. That number describes a mathematical approximation, not a subjective image-quality score.
+
+The project then tries the same idea on a small digit-recognition network. After changing the task, it freezes the original weights and trains only a LoRA correction. A rank-8 correction reached 95.9% accuracy versus 96.9% when updating all weights, while training 1,616 rather than 4,810 parameters. The GIF shows how the image changes as more patterns are kept. This is evidence for the small experiment; it does not prove that rank 8 always suffices for every large model.
+
 ## Problem
 LoRA fine-tunes a big model by freezing every weight matrix W and learning a small update ΔW = A·B, where A is d×r and B is r×k with r ≈ 8. Why should an update with only r independent directions be enough to teach a 7B model a new task? Answering that needs three ideas:
 1. what **rank** means: how many independent directions a matrix really uses;

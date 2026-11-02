@@ -14,6 +14,13 @@ Matematické minimum pred P5 (fine-tuning cez LoRA). Cieľ podľa roadmapy: *vys
 
 ![SVD fotky](assets/svd_image.gif)
 
+## Najprv jednoducho
+Veľký model má obrovské tabuľky váh. Pri doladení na novú úlohu by bolo drahé meniť každé číslo. **LoRA** nechá pôvodné váhy na pokoji a učí iba malú opravu, ktorú vie poskladať z dvoch užších matíc. Otázka tejto úlohy je: **môže taká malá oprava stačiť?**
+
+Pomôže príklad s obrázkom. Čiernobiela fotka je matica čísel; veľa jej riadkov a stĺpcov nesie podobné vzory. **SVD** tieto vzory zoradí podľa dôležitosti. Keď ponecháme len prvých 8, fotka v tomto pokuse zachová 91,7 % meranej „energie“ pri uložení 2,9 % pôvodného počtu čísel. Toto číslo opisuje matematickú aproximáciu, nie subjektívnu kvalitu fotky.
+
+Potom projekt skúsi podobnú myšlienku na malej sieti pre obrázky číslic. Po zmene úlohy zmrazí pôvodné váhy a trénuje len opravu LoRA. Oprava s rankom 8 dosiahla 95,9 % presnosť oproti 96,9 % pri úprave všetkých váh, pričom trénovala 1 616 namiesto 4 810 parametrov. GIF ukazuje, ako sa obraz mení pri rôznom počte ponechaných vzorov. Výsledok platí pre tento malý experiment; sám nedokazuje, že rank 8 vždy stačí každému veľkému modelu.
+
 ## Problém
 LoRA fine-tunuje veľký model tak, že zmrazí každú maticu váh W a učí sa len malú zmenu ΔW = A·B, kde A je d×r a B je r×k s r ≈ 8. Prečo by mala zmena s iba r nezávislými smermi stačiť na to, aby sa 7B model naučil novú úlohu? Odpoveď potrebuje tri myšlienky:
 1. čo znamená **rank**: koľko nezávislých smerov matica naozaj používa;
